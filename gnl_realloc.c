@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl_realloc.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/09 14:33:55 by melperri          #+#    #+#             */
+/*   Updated: 2021/07/09 14:35:30 by melperri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -58,16 +70,17 @@ int	get_next_line(int fd, char **line)
 		if (*line == NULL)
 			return (-1);
 		*line[0] = '\0';
-		return(ft_recurs(fd, line));
+		return (ft_recurs(fd, line));
 	}
 }
 
 int	main(int ac, char **av)
 {
-	char *line = NULL;
-	int	fd;
+	char	*line;
+	int		fd;
 
 	(void)ac;
+	line = NULL;
 	fd = open(av[1], O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
 	{
